@@ -1,0 +1,51 @@
+<mat-card>
+    <mat-card-title>Register</mat-card-title>
+<mat-card-content>
+<form [formGroup]="registerForm">
+
+  <p>
+    <mat-form-field>
+        <input type="text" matInput placeholder="Fullname" formControlName="fullname">
+        <mat-error *ngIf="registerForm.controls.password.errors?.required">
+                A Fullname is required
+        </mat-error>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Email" formControlName="email">
+      <mat-error *ngIf="registerForm.controls.email.errors?.required">
+            Please specify an email address
+      </mat-error>
+      <mat-error *ngIf="registerForm.controls.email.errors?.email">
+            Ooops! it looks like this is not a valid email
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field>
+      <input [type]="hide ? 'password' : 'text'" formControlName="password" matInput placeholder="Password" formControlName="password">
+      <mat-icon matSuffix (click)="hide = !hide">
+            {{ hide ? 'visibility_off' : 'visibility'}}
+      </mat-icon>
+      <mat-error *ngIf="registerForm.controls.password.errors?.required">
+            A password is required
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+  <p *ngIf="error" class="error">
+    {{ error }}
+  </p>
+
+  <div class="wrapper">
+    <button class="btn-register" (click)="tryRegister(registerForm.value)" type="submit" mat-button>Register</button>
+  </div>
+  <p class="mat-register">
+     Already has an Account? <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+  </p>
+</form>
+</mat-card-content>
+</mat-card>
