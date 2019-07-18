@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.registerForm = this.formBuilder.group({
       fullname: ['', Validators.required],
@@ -32,6 +34,7 @@ export class RegisterComponent implements OnInit {
   tryRegister(value){
     this.authService.doRegister(value)
     .then(res => {
+      this.router.navigate(['/login']);
       console.log(res);
     }, err => {
       console.log(err);

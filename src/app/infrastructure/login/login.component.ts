@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  private hide = true;
   loginForm: FormGroup;
   errorMessage: string = '';
   ifFbGoogle = true;
+  
   
   constructor(
     private formBuilder: FormBuilder,
@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
     signInWithFacebook() {
       this.authService.doFacebookLogin()
       .then(res => {
+        console.log("res: ", res);
         this.router.navigate(['/navside']);
       }, err => {
         console.log(err);
