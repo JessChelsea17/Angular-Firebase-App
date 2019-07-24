@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
 import { StorageServiceModule } from 'ngx-webstorage-service';
 import { LocalstorageService } from './services/localstorage.service';
+import {TimeAgoPipe} from 'time-ago-pipe';
 
 // Components
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { RegisterComponent } from './infrastructure/register/register.component'
 import { NavsideComponent } from './components/navside/navside.component';
 import { HomeComponent } from './components/home/home.component';
 import { UserComponent } from './components/user/user.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 // Firebase
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -22,7 +24,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { SettingsComponent } from './components/settings/settings.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { SettingsComponent } from './components/settings/settings.component';
     UserComponent,
     NavsideComponent,
     HomeComponent,
-    SettingsComponent
+    SettingsComponent,
+    TimeAgoPipe
   ],
   imports: [
     BrowserModule,

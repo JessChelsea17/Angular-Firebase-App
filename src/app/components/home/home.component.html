@@ -1,1 +1,54 @@
-<mat-card>Simple card</mat-card>
+<mat-card>Upload a Photo
+        <div class="container">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Select a photo for upload:</h5>
+                    <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+                    <br><br>
+                    <mat-progress-bar *ngIf="uploadState" mode="determinate" [value]="(uploadProgress | async)"></mat-progress-bar>
+                    <br>
+               
+                    <br>
+                    <div class="btn-group" role="group" *ngIf="uploadState | async; let state">
+                        <button  mat-button color="accent" class="btn btn-primary" (click)="task.pause()" [disabled]="state === 'paused'">Pause</button>
+                        <button  mat-button color="warn" class="btn btn-primary" (click)="task.cancel()" [disabled]="!(state === 'paused' || state === 'running')">Cancel</button>
+                        <button  mat-button color="primary" class="btn btn-primary" (click)="task.resume()" [disabled]="state === 'running'">Resume</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+</mat-card>
+
+<div class="dashboard" *ngFor="let item of images">
+    <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{userName}}</mat-card-title>
+          <mat-card-subtitle>{{item.time | timeAgo}}</mat-card-subtitle>
+          <button mat-icon-button class="three-dots-menu" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <!-- <button mat-menu-item (click)="updatePost(item)">
+                  <mat-icon>update</mat-icon>
+                  <span>Update</span>
+              </button> -->
+              <button mat-menu-item (click)="removeImage(item.id)">
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+              </button>
+            </mat-menu>
+        </mat-card-header>
+        <img mat-card-image class="main-image" [src]="item.image">
+        <mat-card-content>
+      
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="likePhoto(item)" [color]="item.isLike === false ? 'warm' : 'primary'">{{item.status}}</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+</div>
+
+
+

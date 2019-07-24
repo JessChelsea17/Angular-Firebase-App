@@ -1,9 +1,5 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
-import { LocalstorageService } from 'src/app/services/localstorage.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators'
-import { userProfile } from 'src/app/model/app.model';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import * as moment from 'moment';
@@ -13,7 +9,7 @@ import * as moment from 'moment';
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent implements OnInit, OnDestroy {
   genders: string[] = ['Female', 'Male', 'Others'];
   user: any;
   saveProfile: FormGroup;
@@ -24,8 +20,6 @@ export class SettingsComponent implements OnInit {
   private unsubscribe$: Subject<any> = new Subject<any>();
 
   constructor(
-    private localStorageService: LocalstorageService, 
-    private authService: AuthService, 
     private firestoreService: FirestoreService,
     private formBuilder: FormBuilder) {
       this.saveProfile = this.formBuilder.group({
@@ -110,8 +104,6 @@ export class SettingsComponent implements OnInit {
   cancelEdit() {
     this.isEdit = false;
   }
-
-  
 
   createUser(createUser) {
     let user = {};

@@ -1,0 +1,28 @@
+.dashboard {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.example-card {
+    max-width: 500px;
+}
+  
+.main-image{
+    margin:10px auto;
+    width: 100%;
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba2.jpg');
+    background-size: cover;
+}
+
+.three-dots-menu{
+    right: 0px;
+    position: absolute;
+}
+
+
+  

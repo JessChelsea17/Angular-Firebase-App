@@ -3,12 +3,33 @@
   <mat-card-content>
     <mat-list>
       <mat-list-item>
-        <mat-icon matListIcon>person</mat-icon>
-        <h2 matLine>{{name}}</h2>
-        <p matLine>{{email}}</p>
+        <div class="group-gap">
+					<!-- Upload image -->
+					<div class="avatar-upload">
+						<div class="avatar-edit">
+							<input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" />
+            </div>
+            <div class="avatar-preview">
+              <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-list-item>
+      <mat-list-item class="edit-button">
+            <form [formGroup]="imageForm" (ngSubmit)="onSubmit()">
+                <button mat-button type="submit" class="btn btn-danger btn-lg btn-block" (click)="fileInput.click()">Upload Image</button>
+            </form>
+      </mat-list-item>
+      <mat-list-item class="profile-details">
+          <h2 matLine>{{name}}</h2>
+          <p matLine>{{email}}</p>
       </mat-list-item>
     </mat-list>
+
   </mat-card-content>
 </mat-card>
+<div>{{url}}</div>
+
 
 
