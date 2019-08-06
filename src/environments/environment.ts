@@ -4,15 +4,7 @@
 
 export const environment = {
   production: false,
-  firebase: { 
-    apiKey: "AIzaSyCiW4M4ygO9hw6TGLTsdGn9fE8pnVU8Qao",
-    authDomain: "app-sample-firebase.firebaseapp.com",
-    databaseURL: "https://app-sample-firebase.firebaseio.com",
-    projectId: "app-sample-firebase",
-    storageBucket: "gs://app-sample-firebase.appspot.com/",
-    messagingSenderId: "212075008887",
-    appId: "1:212075008887:web:58fceacae39e8a74"
-  }
+  firebase: { } // add firebase config here from https://console.firebase.google.com
 };
 
 /*
