@@ -1,6 +1,6 @@
 # AngularFirebaseApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0. This app used Firebase Hosting, Functions, Cloud Firestore and Storage. Here's the completed guide and documentation of [Firebase](https://firebase.google.com/docs/guides). Create an account in [Firebase Console](https://console.firebase.google.com) for the config to be able to integrate in Angular.
 
 ## Development server
 
